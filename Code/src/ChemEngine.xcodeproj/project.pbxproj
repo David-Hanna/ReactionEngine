@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		08387E441B016A90005C31D7 /* Element.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08387E421B016A90005C31D7 /* Element.cpp */; };
-		08387E471B0173AF005C31D7 /* ElementFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08387E451B0173AF005C31D7 /* ElementFactory.cpp */; };
-		086E4F8D1B005523000AD18A /* ChemEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 086E4F8A1B005523000AD18A /* ChemEngine.cpp */; };
 		086E4F8E1B005523000AD18A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 086E4F8C1B005523000AD18A /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -28,11 +26,7 @@
 /* Begin PBXFileReference section */
 		08387E421B016A90005C31D7 /* Element.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Element.cpp; sourceTree = "<group>"; };
 		08387E431B016A90005C31D7 /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Element.h; sourceTree = "<group>"; };
-		08387E451B0173AF005C31D7 /* ElementFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementFactory.cpp; sourceTree = "<group>"; };
-		08387E461B0173AF005C31D7 /* ElementFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementFactory.h; sourceTree = "<group>"; };
 		086E4F7F1B005475000AD18A /* ChemEngine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ChemEngine; sourceTree = BUILT_PRODUCTS_DIR; };
-		086E4F8A1B005523000AD18A /* ChemEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChemEngine.cpp; sourceTree = "<group>"; };
-		086E4F8B1B005523000AD18A /* ChemEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChemEngine.h; sourceTree = "<group>"; };
 		086E4F8C1B005523000AD18A /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,13 +60,9 @@
 		086E4F811B005475000AD18A /* ChemEngine */ = {
 			isa = PBXGroup;
 			children = (
-				086E4F8A1B005523000AD18A /* ChemEngine.cpp */,
-				086E4F8B1B005523000AD18A /* ChemEngine.h */,
 				086E4F8C1B005523000AD18A /* main.cpp */,
 				08387E421B016A90005C31D7 /* Element.cpp */,
 				08387E431B016A90005C31D7 /* Element.h */,
-				08387E451B0173AF005C31D7 /* ElementFactory.cpp */,
-				08387E461B0173AF005C31D7 /* ElementFactory.h */,
 			);
 			path = ChemEngine;
 			sourceTree = "<group>";
@@ -134,9 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08387E441B016A90005C31D7 /* Element.cpp in Sources */,
-				08387E471B0173AF005C31D7 /* ElementFactory.cpp in Sources */,
 				086E4F8E1B005523000AD18A /* main.cpp in Sources */,
-				086E4F8D1B005523000AD18A /* ChemEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

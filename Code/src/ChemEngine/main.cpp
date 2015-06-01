@@ -6,26 +6,56 @@
 //  Copyright (c) 2015 Anon. All rights reserved.
 //
 
-#include "ElementFactory.h"
 #include "Element.h"
 
 #include <memory>
 #include <iostream>
+#include <vector>
 
 int main(int argc, const char * argv[]) {
     
-    std::cout << "Hello, World!\n";
+    Element carbon("carbon");
     
-    std::shared_ptr<Element> carbon = ElementFactory::instance().createElement("carbon");
-    std::shared_ptr<Element> hydrogen = ElementFactory::instance().createElement("hydrogen");
+    std::vector<Element> hydroVec;
     
-    std::cout << "Carbon's name: " << carbon->Name() << std::endl;
-    std::cout << "Carbon's ID: " << carbon->InstanceID() << std::endl;
-    std::cout << "Carbon's free electrons: " << carbon->FreeElectrons() << std::endl;
+    for (int i = 0; i < 5; i++)
+    {
+        Element hydrogen("hydrogen");
+        hydroVec.push_back(hydrogen);
+    }
     
-    std::cout << "Hydrogen's name: " << hydrogen->Name() << std::endl;
-    std::cout << "Hydrogen's ID: " << hydrogen->InstanceID() << std::endl;
-    std::cout << "Hydrogen's free electrons: " << hydrogen->FreeElectrons() << std::endl;
+    for (std::vector<Element>::iterator iter = hydroVec.begin(); iter != hydroVec.end(); iter++)
+    {
+        if (carbon.CreateBond(&*iter))
+            std::cout << "Successfully created bond." << std::endl;
+        else
+            std::cout << "Failed to create bond." << std::endl;
+    }
+    
+    for (Element::BondsMap::const_iterator iter = carbon.Begin(); iter != carbon.End(); iter++)
+    {
+        std::cout << "Bonded with " << iter->second->Name() << " with ID " << iter->second->InstanceID() << std::endl;
+    }
+    
+    for (std::vector<Element>::iterator iter = hydroVec.begin(); iter != hydroVec.end(); iter++)
+    {
+        if (carbon.DetachBond(iter->InstanceID()))
+            std::cout << "Successfully detached bond." << std::endl;
+        else
+            std::cout << "Failed to detach bond." << std::endl;
+    }
+    
+    if (carbon.BondCount() == 0)
+    {
+        std::cout << "Carbon has no bonds!" << std::endl;
+    }
+    else
+    {
+        for (Element::BondsMap::const_iterator iter = carbon.Begin(); iter != carbon.End(); iter++)
+        {
+            std::cout << "Bonded with " << iter->second->Name() << " with ID " << iter->second->InstanceID() << std::endl;
+        }
+    }
     
     return 0;
 }

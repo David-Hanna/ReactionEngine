@@ -9,33 +9,40 @@
 #ifndef __ChemEngine__Element__
 #define __ChemEngine__Element__
 
+#include <iostream>
 #include <string>
-#include <vector>
+#include <unordered_map>
 #include <memory>
-
-class ElementFactory;
+#include <assert.h>
 
 class Element
 {
-    friend class ElementFactory;
+public:
+    typedef std::unordered_map<unsigned int, Element*> BondsMap;
+    
+    Element(const std::string _name);
+
+    const std::string& Name() const             { return name; }
+    unsigned int InstanceID() const             { return instanceID; }
+    unsigned int FreeElectrons() const          { return freeElectrons; }
+    
+    BondsMap::iterator Begin()                  { return bonds.begin(); }
+    BondsMap::const_iterator Begin() const      { return bonds.begin(); }
+    BondsMap::iterator End()                    { return bonds.end(); }
+    BondsMap::const_iterator End() const        { return bonds.end(); }
+    
+    bool CreateBond(Element* element, bool bidirectional = true);
+    bool DetachBond(const unsigned int ID, bool bidirectional = true);
+    unsigned int BondCount() const              { return bondCount; }
     
 private:
+    const unsigned int instanceID;
     std::string name;
-    unsigned int instanceID;
     unsigned int freeElectrons;
-    std::vector<std::shared_ptr<Element>> bonds;
+    BondsMap bonds;
+    unsigned int bondCount;
     
-    Element(const std::string _name,
-            const unsigned int _instanceID,
-            const unsigned int _freeElectrons);
-    
-public:
-    std::string Name() const                { return name; }
-    unsigned int InstanceID() const         { return instanceID; }
-    unsigned int FreeElectrons() const      { return freeElectrons; }
-    
-    bool createBond(std::shared_ptr<Element> element);
-    bool detachBond(const unsigned int ID);
+    static unsigned int nextInstanceID;
 };
 
 #endif /* defined(__ChemEngine__Element__) */
